@@ -15,6 +15,7 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { AjouterComponent } from './restaurant/ajouter/ajouter.component';
 import { RestaurantService } from '../servives/restaurant.services';
 import { HttpClientModule } from '@angular/common/http';
+import { ModifierComponent } from './restaurant/modifier/modifier.component';
 
 const appRoutes: Routes = [
     { path: 'deuxieme', component: DeuxiemeComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     CreerComponent,
     UpdateComponent,
     RestaurantComponent,
-    AjouterComponent
+    AjouterComponent,
+    ModifierComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
