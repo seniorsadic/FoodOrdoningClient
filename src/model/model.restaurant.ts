@@ -6,4 +6,5 @@ export class Restaurant{
     designation:string;
     email:string;
     telephone:string;
+    image_url:string="";
 }

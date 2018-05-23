@@ -1,6 +1,5 @@
 
 <div class="row">
- 
     <div class="col s6 offset-s4">
         <h1>Liste des restaurants</h1>
     </div>
@@ -21,7 +20,7 @@
       <td>{{a.email}} </td>
       <td>{{a.telephone}} </td>
       <td>
-        <a (click)="onEditAagence(a.id_resto)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="onDeleteAgence(a)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
+        <a (click)="onEditAagence(a.id_resto)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="deleteRestaurant(a.id_resto)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
       </td>
     </tr>
   </table>

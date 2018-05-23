@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from '../../../servives/restaurant.services';
+import { Restaurant } from '../../../model/model.restaurant';
+import { Router } from '@angular/router';
+import { Response } from '@angular/http';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-ajouter',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AjouterComponent implements OnInit {
 
-  constructor() { }
+  restaurant:Restaurant;
+  constructor(public restaurantservice:RestaurantService,public router:Router) { }
 
   ngOnInit() {
+    this.restaurant=new Restaurant();
   }
 
+  enregistrer(){
+    this.restaurant.code="RESTO"+Math.floor(Math.random()*500000000);
+    this.restaurantservice.saveRestaurant(this.restaurant).subscribe((res:Response) => this.restaurant = res.json());
+    console.log(this.restaurant);
+    this.router.navigate(['/restaurants']);
+    
+  }
 }
