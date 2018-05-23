@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { CategorieService } from '../servives/categorie.services';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { AjouterComponent } from './restaurant/ajouter/ajouter.component';
+import { RestaurantService } from '../servives/restaurant.services';
 
 const appRoutes: Routes = [
     { path: 'deuxieme', component: DeuxiemeComponent},
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule
   ],
-  providers: [ArticleService, CategorieService],
+  providers: [ArticleService, CategorieService, RestaurantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
