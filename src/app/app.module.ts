@@ -11,6 +11,8 @@ import {HttpModule} from '@angular/http';
 import {ArticleService} from '../servives/article.services';
 import {FormsModule} from '@angular/forms';
 import { CategorieService } from '../servives/categorie.services';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { AjouterComponent } from './restaurant/ajouter/ajouter.component';
 
 const appRoutes: Routes = [
     { path: 'deuxieme', component: DeuxiemeComponent},
@@ -26,7 +28,9 @@ const appRoutes: Routes = [
     PremierComponent,
     DeuxiemeComponent,
     CreerComponent,
-    UpdateComponent
+    UpdateComponent,
+    RestaurantComponent,
+    AjouterComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule
