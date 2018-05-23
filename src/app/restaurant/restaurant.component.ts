@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestaurantService } from '../../servives/restaurant.services';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-restaurant',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
-  constructor() { }
+  listeRestaurants:any;
+  constructor(public restaurantservice:RestaurantService) { }
 
   ngOnInit() {
+    this.restaurantservice.getRestaurants().subscribe((res:Response) => this.listeRestaurants = res.json());
   }
 
 }

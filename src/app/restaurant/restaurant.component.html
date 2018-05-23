@@ -1,3 +1,24 @@
-<p>
-  restaurant works!
-</p>
+<div class="container">
+  <table >
+    <thead>
+    <tr>
+      <th>Code</th><th>Designation</th> <th>Adresse</th> <th>Email</th><th>Téléphone</th> <th></th>
+    </tr>
+    </thead>
+    <tr *ngFor="let a of listeRestaurants">
+      <td>{{a.code}} </td>
+      <td>{{a.designation}} </td>
+      <td>{{a.adresse}} </td>
+      <td>{{a.email}} </td>
+      <td>{{a.telephone}} </td>
+      <td>
+        <a (click)="onEditAagence(a.id_resto)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="onDeleteAgence(a)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
+      </td>
+    </tr>
+  </table>
+  </div>
+  <div class="fixed-action-btn">
+    <a routerLink="/ajouterrestaurant" class="btn-floating btn-large red" >
+      <i class="large material-icons">mode_edit</i>
+    </a>
+  </div>
