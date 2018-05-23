@@ -1,0 +1,52 @@
+<h1>Les articles</h1>
+
+<p> Designation : {{ article.designation }} </p> <p *ngIf="article.id_categorie!=null">Categorie : {{article.id_categorie.nom}}</p>
+
+<div class="row">
+  
+  <div class="col s10 offset-s1">
+    <div class="card-panel hoverable"> 
+      <div class="row valign-wrapper">
+        <div class="col s2">
+          <img src="img/services-bg.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+        </div>
+        <div class="col s10">
+          <span class="black-text">
+            Classe 1.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+<table >
+  <thead>
+  <tr>
+    <th>Designation</th> <th>Prix</th> <th></th>
+  </tr>
+  </thead>
+  <tr *ngFor="let a of liste">
+    <td>{{a.designation}} </td>
+    <td>{{a.prix}} </td>
+    <td>
+      <a (click)="onEditAagence(a.idagence)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="onDeleteAgence(a)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="fixed-action-btn">
+  <a routerLink="/creer" class="btn-floating btn-large red" >
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a href="#" class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+    <li><a href="#" class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+    <li><a href="#" class="btn-floating green"><i class="material-icons">publish</i></a></li>
+    <li><a href="#" class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+  </ul>
+</div>
+
+

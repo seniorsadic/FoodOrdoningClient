@@ -23,9 +23,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css","src/assets/css/materialize.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/materialize.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -36,7 +38,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "all", 
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
