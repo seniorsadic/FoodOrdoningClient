@@ -1,3 +1,37 @@
-<p>
-  modifier works!
-</p>
+<div class="row">
+    <div class="col s6 offset-s4">
+        <h1>Modifier Restaurant</h1>
+    </div>
+</div>
+
+<div class="container">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input [(ngModel)]="restaurant.designation" id="icon_prefix" type="text" class="validate">
+            <label for="icon_prefix">Désignation</label>
+          </div>
+          <div class="input-field col s12">
+            <i class="material-icons prefix">add_location</i>
+            <input [(ngModel)]="restaurant.adresse" id="icon_telephone" type="tel" class="validate">
+            <label for="icon_telephone">Adresse</label>
+          </div>
+          <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input [(ngModel)]="restaurant.email" id="email" type="email" class="validate">
+              <label for="icon_telephone">Email</label>
+          </div>
+          <div class="input-field col s12">
+                <i class="material-icons prefix">local_phone</i>
+                <input [(ngModel)]="restaurant.telephone" id="icon_telephone" type="tel" class="validate">
+                <label for="icon_telephone">Téléphone</label>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" (click)="modifier()" name="action">Modifier
+              <i class="material-icons right">send</i>
+            </button>
+        </div>
+      </div>
+</div>
