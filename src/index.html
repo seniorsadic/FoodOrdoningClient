@@ -24,7 +24,15 @@
     var instances = M.FormSelect.init(elems, {
                         classes: 'select'
                     });
-  });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems,  {
+                      responsiveThreshold: 0
+                    });
+     });
+
 </script>
 </body>
 </html>

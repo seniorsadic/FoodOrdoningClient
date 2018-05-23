@@ -16,6 +16,7 @@ import { AjouterComponent } from './restaurant/ajouter/ajouter.component';
 import { RestaurantService } from '../servives/restaurant.services';
 import { HttpClientModule } from '@angular/common/http';
 import { ModifierComponent } from './restaurant/modifier/modifier.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
     { path: 'deuxieme', component: DeuxiemeComponent},
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     { path: 'restaurants', component: RestaurantComponent},
     { path: 'ajouterrestaurant', component: AjouterComponent},
     { path: 'modifierrestaurant/:id', component: ModifierComponent},
-    {path: '', redirectTo: '/deuxieme', pathMatch: 'full'}
+    { path: 'home', component: AccueilComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'}
   ];
 
 
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     UpdateComponent,
     RestaurantComponent,
     AjouterComponent,
-    ModifierComponent
+    ModifierComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
