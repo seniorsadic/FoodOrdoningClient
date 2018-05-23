@@ -18,6 +18,8 @@ const appRoutes: Routes = [
     { path: 'deuxieme', component: DeuxiemeComponent},
     { path: 'troisieme', component: CreerComponent},
     { path: 'creer', component: UpdateComponent},
+    { path: 'restaurants', component: RestaurantComponent},
+    { path: 'ajouterrestaurant', component: AjouterComponent},
     {path: '', redirectTo: '/deuxieme', pathMatch: 'full'}
   ];
 
