@@ -17,11 +17,14 @@ import { RestaurantService } from '../servives/restaurant.services';
 import { HttpClientModule } from '@angular/common/http';
 import { ModifierComponent } from './restaurant/modifier/modifier.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { ArticleComponent } from './article/article.component';
+import { AjouterArticleComponent } from './article/ajouter-article/ajouter-article.component';
+import { ModifierArticleComponent } from './article/modifier-article/modifier-article.component';
 
 const appRoutes: Routes = [
-    { path: 'deuxieme', component: DeuxiemeComponent},
-    { path: 'troisieme', component: CreerComponent},
-    { path: 'creer', component: UpdateComponent},
+    { path: 'articles', component: ArticleComponent},
+    { path: 'modifierarticle/:id', component: ModifierArticleComponent},
+    { path: 'ajouterarticle', component: AjouterArticleComponent},
     { path: 'restaurants', component: RestaurantComponent},
     { path: 'ajouterrestaurant', component: AjouterComponent},
     { path: 'modifierrestaurant/:id', component: ModifierComponent},
@@ -40,7 +43,10 @@ const appRoutes: Routes = [
     RestaurantComponent,
     AjouterComponent,
     ModifierComponent,
-    AccueilComponent
+    AccueilComponent,
+    ArticleComponent,
+    AjouterArticleComponent,
+    ModifierArticleComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
