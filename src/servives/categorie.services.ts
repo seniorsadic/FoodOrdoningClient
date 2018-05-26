@@ -5,10 +5,12 @@ import {Categorie} from "../model/model.categorie";
 @Injectable()
 export class CategorieService {
 
+  URl:string="http://www.sadicomputing.com/FoodOrdering/web/"
+
   constructor(public http: Http) {}
 
   getCategories() {
-    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/categories");
+    return this.http.get(this.URl+"categories");
   }
 
   getCategorieById(id:number) {
