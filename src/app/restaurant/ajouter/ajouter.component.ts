@@ -24,6 +24,10 @@ export class AjouterComponent implements OnInit {
     this.restaurantservice.saveRestaurant(this.restaurant).subscribe((res:Response) => this.restaurant = res.json());
     console.log(this.restaurant);
     this.router.navigate(['/restaurants']);
-    
+
+  }
+
+  annuler(){
+    this.router.navigate(['/restaurants']);
   }
 }

@@ -28,4 +28,8 @@ export class ModifierComponent implements OnInit {
     this.router.navigate(['/restaurants']);
   }
 
+  annuler(){
+    this.router.navigate(['/restaurants']);
+  }
+
 }
