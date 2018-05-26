@@ -10,24 +10,24 @@ export class RestaurantService {
   constructor(public http: Http) {}
 
   getRestaurants() {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/restaurants");
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/restaurants");
   }
 
   getRestaurantById(id:number) {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/restaurants/"+id);
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/restaurants/"+id);
   }
 
   saveRestaurant(restaurant:Restaurant) {
-    return this.http.post("http://localhost/myappli/web/app_dev.php/restaurants",restaurant);
+    return this.http.post("http://www.sadicomputing.com/FoodOrdering/web/restaurants",restaurant);
     
   }
 
   updateRestaurant(restaurant:Restaurant) {
-    return this.http.put("http://localhost/myappli/web/app_dev.php/restaurants/"+restaurant.id_resto,restaurant);
+    return this.http.put("http://www.sadicomputing.com/FoodOrdering/web/restaurants/"+restaurant.id_resto,restaurant);
   }
 
   deleteRestaurant(id:number) {
-    return this.http.delete("http://localhost/myappli/web/app_dev.php/restaurants/"+id);
+    return this.http.delete("http://www.sadicomputing.com/FoodOrdering/web/restaurants/"+id);
   }
 
 }

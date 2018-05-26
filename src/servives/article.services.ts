@@ -8,23 +8,23 @@ export class ArticleService {
   constructor(public http: Http) {}
 
   getArticles() {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/articles");
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/articles");
   }
 
   getArticleById(id:number) {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/articles/"+id);
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/articles/"+id);
   }
 
   saveArticle(article:Article) {
-    return this.http.post("http://localhost/myappli/web/app_dev.php/articles",article);
+    return this.http.post("http://www.sadicomputing.com/FoodOrdering/web/articles",article);
   }
 
   updateArticle(article:Article) {
-    return this.http.put("http://localhost/myappli/web/app_dev.php/articles/"+article.id_article,article);
+    return this.http.put("http://www.sadicomputing.com/FoodOrdering/web/articles/"+article.id_article,article);
   }
 
   deleteArticle(id:number) {
-    return this.http.delete("http://localhost/myappli/web/app_dev.php/articles/"+id);
+    return this.http.delete("http://www.sadicomputing.com/FoodOrdering/web/articles/"+id);
   }
 
 }

@@ -8,23 +8,23 @@ export class CategorieService {
   constructor(public http: Http) {}
 
   getCategories() {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/categories");
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/categories");
   }
 
   getCategorieById(id:number) {
-    return this.http.get("http://localhost/myappli/web/app_dev.php/categories/"+id);
+    return this.http.get("http://www.sadicomputing.com/FoodOrdering/web/categories/"+id);
   }
 
   saveCategorie(categorie:Categorie) {
-    return this.http.post("http://localhost/myappli/web/app_dev.php/categories",categorie);
+    return this.http.post("http://www.sadicomputing.com/FoodOrdering/web/categories",categorie);
   }
 
   updateCategorie(categorie:Categorie) {
-    return this.http.put("http://localhost/myappli/web/app_dev.php/categories/"+categorie.id_categorie,categorie);
+    return this.http.put("http://www.sadicomputing.com/FoodOrdering/web/categories/"+categorie.id_categorie,categorie);
   }
 
   deleteCategorie(id:number) {
-    return this.http.delete("http://localhost/myappli/web/app_dev.php/categories/"+id);
+    return this.http.delete("http://www.sadicomputing.com/FoodOrdering/web/categories/"+id);
   }
 
 }

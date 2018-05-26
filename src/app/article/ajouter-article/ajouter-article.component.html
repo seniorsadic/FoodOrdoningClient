@@ -36,15 +36,13 @@
       </div>
 </div>
 <div class="container">
-  <select  >
-    <option value="T">T</option>
-    <option value="A">A</option>
+  <select>
     <option *ngFor="let k of listeCategories" value="">{{k.nom}}</option>
   </select>
   <p *ngFor="let e of listeCategories" >
       <label>
         <input type="checkbox" />
-        <span>{{e.nom}}</span>
+        <span>{{e.nom}}</span> 
       </label>
     </p>
 </div>
