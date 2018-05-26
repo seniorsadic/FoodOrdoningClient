@@ -20,6 +20,10 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { ArticleComponent } from './article/article.component';
 import { AjouterArticleComponent } from './article/ajouter-article/ajouter-article.component';
 import { ModifierArticleComponent } from './article/modifier-article/modifier-article.component';
+import { CatalogueService } from '../servives/catalogue.services';
+import { CatalogueComponent } from './catalogue/catalogue.component';
+import { AjoutercatalogueComponent } from './catalogue/ajoutercatalogue/ajoutercatalogue.component';
+import { ModifierrcatalogueComponent } from './catalogue/modifierrcatalogue/modifierrcatalogue.component';
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
@@ -28,6 +32,9 @@ const appRoutes: Routes = [
     { path: 'restaurants', component: RestaurantComponent},
     { path: 'ajouterrestaurant', component: AjouterComponent},
     { path: 'modifierrestaurant/:id', component: ModifierComponent},
+    { path: 'catalogues', component: CatalogueComponent},
+    { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
+    { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
     { path: 'home', component: AccueilComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'}
   ];
@@ -46,12 +53,15 @@ const appRoutes: Routes = [
     AccueilComponent,
     ArticleComponent,
     AjouterArticleComponent,
-    ModifierArticleComponent
+    ModifierArticleComponent,
+    CatalogueComponent,
+    AjoutercatalogueComponent,
+    ModifierrcatalogueComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
