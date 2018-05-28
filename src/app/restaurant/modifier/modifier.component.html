@@ -9,29 +9,40 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="restaurant.designation" id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Désignation</label>
+            <input placeholder="Placeholder" [(ngModel)]="restaurant.designation" type="text" class="validate">
+            <label >Désignation</label>
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">add_location</i>
-            <input [(ngModel)]="restaurant.adresse" id="icon_telephone" type="tel" class="validate">
-            <label for="icon_telephone">Adresse</label>
+            <input placeholder="Placeholder" [(ngModel)]="restaurant.adresse" type="text" class="validate">
+            <label >Adresse</label>
           </div>
           <div class="input-field col s12">
-              <i class="material-icons prefix">email</i>
-              <input [(ngModel)]="restaurant.email" id="email" type="email" class="validate">
-              <label for="icon_telephone">Email</label>
+            <i class="material-icons prefix">email</i>
+            <input placeholder="Placeholder" [(ngModel)]="restaurant.email" type="email" class="validate">
+            <label >Email</label>
           </div>
           <div class="input-field col s12">
-                <i class="material-icons prefix">local_phone</i>
-                <input [(ngModel)]="restaurant.telephone" id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Téléphone</label>
-            </div>
+            <i class="material-icons prefix">local_phone</i>
+            <input placeholder="Placeholder" [(ngModel)]="restaurant.telephone" type="tel" class="validate">
+            <label >Téléphone</label>
+          </div>
         </div>
         <div class="row">
+          <div class="col s2">
             <button class="btn waves-effect waves-light" (click)="modifier()" name="action">Modifier
               <i class="material-icons right">send</i>
             </button>
+          </div>
+          <div>
+          </div>
+          <div>
+            <button class="btn waves-effect blue accent-4" (click)="annuler()" name="action">Annuler
+              <i class="material-icons right">highlight_off</i>
+            </button>
+          </div>
+
+
         </div>
       </div>
 </div>
