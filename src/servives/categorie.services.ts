@@ -28,9 +28,7 @@ export class CategorieService {
   }
 
   deleteCategorie(id:number) {
-
     return this.http.delete(this.URl+"categories/"+id);
-
   }
 
 }
