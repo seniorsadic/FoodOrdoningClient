@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ChartsModule} from 'ng2-charts';
 import { AppComponent } from './app.component';
 import { PremierComponent } from './premier/premier.component';
 import { DeuxiemeComponent } from './deuxieme/deuxieme.component';
@@ -24,6 +24,11 @@ import { CatalogueService } from '../servives/catalogue.services';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { AjoutercatalogueComponent } from './catalogue/ajoutercatalogue/ajoutercatalogue.component';
 import { ModifierrcatalogueComponent } from './catalogue/modifierrcatalogue/modifierrcatalogue.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { ModifieremployeComponent } from './employees/modifieremploye/modifieremploye.component';
+import { AjouteremployeComponent } from './employees/ajouteremploye/ajouteremploye.component';
+import { ReportcommandeComponent } from './reportcommande/reportcommande.component';
+import { ReportCommandeService } from '../servives/reportcommande.services';
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
@@ -36,7 +41,8 @@ const appRoutes: Routes = [
     { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
     { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
     { path: 'home', component: AccueilComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'}
+    { path: 'reportingcommande', component: ReportcommandeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full'}
   ];
 
 
@@ -56,12 +62,16 @@ const appRoutes: Routes = [
     ModifierArticleComponent,
     CatalogueComponent,
     AjoutercatalogueComponent,
-    ModifierrcatalogueComponent
+    ModifierrcatalogueComponent,
+    EmployeesComponent,
+    ModifieremployeComponent,
+    AjouteremployeComponent,
+    ReportcommandeComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
+    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService, ReportCommandeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
