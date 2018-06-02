@@ -4,9 +4,7 @@ import {Categorie} from "../model/model.categorie";
 
 @Injectable()
 export class CategorieService {
-
-  URl2:string="http://www.sadicomputing.com/FoodOrdering/web/"
-
+   URl2:string="http://www.sadicomputing.com/FoodOrdering/web/";
   constructor(public http: Http) {}
 
   getCategories() {
@@ -26,7 +24,7 @@ export class CategorieService {
   }
 
   deleteCategorie(id:number) {
-    return this.http.delete(this.URl2+"categories/"+id); 
+    return this.http.delete(this.URl2+"categories/"+id);
   }
 
 }
