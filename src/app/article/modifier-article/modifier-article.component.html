@@ -9,13 +9,13 @@
         <div class="row">
           <div class="input-field col s12">
             <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="article.designation" id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Désignation</label>
+            <input placeholder="Placeholder" [(ngModel)]="article.designation" type="text" class="validate">
+            <label >Désignation</label>
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">euro_symbol</i>
-            <input [(ngModel)]="article.prix" id="icon_telephone" type="tel" class="validate">
-            <label for="icon_telephone">Prix</label>
+            <input placeholder="Placeholder" [(ngModel)]="article.prix" type="text" class="validate">
+            <label >Prix</label>
           </div>
           <div class="input-field col s12">
               <i class="material-icons prefix">widgets</i>
@@ -26,7 +26,7 @@
             </select>
             <label>Images in select</label>
           </div>
-        
+
         </div>
         <div class="row">
             <button class="btn waves-effect waves-light" (click)="save()" name="action">Modifier
