@@ -4,15 +4,11 @@ import {Categorie} from "../model/model.categorie";
 
 @Injectable()
 export class CategorieService {
-<<<<<<< HEAD
-   URl2:string="http://www.sadicomputing.com/FoodOrdering/web/";
-=======
 
 
   URl:string="http://www.sadicomputing.com/FoodOrdering/web/"
 
 
->>>>>>> d912cdd9052179600933507bccf7d5003fe1e339
   constructor(public http: Http) {}
 
   getCategories() {
@@ -32,11 +28,7 @@ export class CategorieService {
   }
 
   deleteCategorie(id:number) {
-<<<<<<< HEAD
-    return this.http.delete(this.URl2+"categories/"+id);
-=======
     return this.http.delete(this.URl+"categories/"+id);
->>>>>>> d912cdd9052179600933507bccf7d5003fe1e339
   }
 
 }
