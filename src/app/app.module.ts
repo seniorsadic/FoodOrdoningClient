@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { PremierComponent } from './premier/premier.component';
 import { DeuxiemeComponent } from './deuxieme/deuxieme.component';
@@ -41,7 +40,7 @@ const appRoutes: Routes = [
     { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
     { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
     { path: 'home', component: AccueilComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'}
+    { path: '', redirectTo: '/home', pathMatch: 'full'}
   ];
 
 

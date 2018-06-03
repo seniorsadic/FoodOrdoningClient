@@ -1,0 +1,16 @@
+
+<div class="input-field col s12">
+    <i class="material-icons prefix">widgets</i>
+  <select class="icons" >
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1" data-icon="../../../assets/img/portfolio-2.jpg" class="left">Point E</option>
+    <option *ngFor="let listreport of reportCommandeResults"  value="{{listreport.date}}" data-icon="../../../assets/img/portfolio-2.jpg" class="left">{{listreport.date}}</option>
+    <option value="1" data-icon="../../../assets/img/portfolio-2.jpg" class="left">Point E</option>
+  </select>
+  <label>Images in select</label>
+</div>
+
+
+<P *ngFor="let listreport of reportCommandeResults">{{listreport.date}}</P>
+
+
