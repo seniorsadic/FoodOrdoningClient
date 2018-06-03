@@ -21,11 +21,13 @@ import { AjouterArticleComponent } from './article/ajouter-article/ajouter-artic
 import { ModifierArticleComponent } from './article/modifier-article/modifier-article.component';
 import { CatalogueService } from '../servives/catalogue.services';
 import { CatalogueComponent } from './catalogue/catalogue.component';
+import { ReportcommandeComponent } from './reportcommande/reportcommande.component';
 import { AjoutercatalogueComponent } from './catalogue/ajoutercatalogue/ajoutercatalogue.component';
 import { ModifierrcatalogueComponent } from './catalogue/modifierrcatalogue/modifierrcatalogue.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListeproduitsComponent } from './menu/listeproduits/listeproduits.component';
 import { AddArticleComponent } from './menu/add-article/add-article.component';
+import { ReportCommandeService } from '../servives/reportcommande.services';
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
@@ -63,12 +65,13 @@ const appRoutes: Routes = [
     ModifierrcatalogueComponent,
     MenuComponent,
     ListeproduitsComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    ReportcommandeComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
