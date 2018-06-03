@@ -17,6 +17,10 @@ export class ArticleService {
     return this.http.get(this.URl+"articles/"+id);
   }
 
+  getArticlesByCategorie(id:number) {
+    return this.http.get(this.URl+"articlesbycategorie/"+id);
+  }
+
   saveArticle(article:Article) {
     return this.http.post(this.URl+"articles",article);
   }

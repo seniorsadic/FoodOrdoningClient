@@ -24,9 +24,14 @@ import { CatalogueService } from '../servives/catalogue.services';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { AjoutercatalogueComponent } from './catalogue/ajoutercatalogue/ajoutercatalogue.component';
 import { ModifierrcatalogueComponent } from './catalogue/modifierrcatalogue/modifierrcatalogue.component';
+import { MenuComponent } from './menu/menu.component';
+import { ListeproduitsComponent } from './menu/listeproduits/listeproduits.component';
+import { AddArticleComponent } from './menu/add-article/add-article.component';
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
+    { path: 'addarticle/:id', component: AddArticleComponent},
+    { path: 'menu', component: MenuComponent},
     { path: 'modifierarticle/:id', component: ModifierArticleComponent},
     { path: 'ajouterarticle', component: AjouterArticleComponent},
     { path: 'restaurants', component: RestaurantComponent},
@@ -56,7 +61,10 @@ const appRoutes: Routes = [
     ModifierArticleComponent,
     CatalogueComponent,
     AjoutercatalogueComponent,
-    ModifierrcatalogueComponent
+    ModifierrcatalogueComponent,
+    MenuComponent,
+    ListeproduitsComponent,
+    AddArticleComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule

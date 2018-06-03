@@ -1,0 +1,21 @@
+
+<h1 class="center-align">Catalogue</h1>
+
+<div class="row">
+  <div *ngFor="let a of listes" class="col s12 m3" style="min-height: 60px;">
+    <div class="card" >
+      <div class="card-image">
+        <img src="../../assets/img/myresto.jpg" height="100px" width="10px">
+        
+        <a routerLink="/addarticle/{{a.id_categorie}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+      </div>
+      <span class="card-title">{{a.nom}}</span>
+      <div class="card-content"> 
+        <app-listeproduits  [categorie]="a" >
+        </app-listeproduits>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m2">    
+  </div>
+</div>
