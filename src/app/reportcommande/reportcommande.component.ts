@@ -6,7 +6,7 @@ import { Response } from '@angular/http';
 @Component({
   selector: 'app-reportcommande',
   templateUrl: './reportcommande.component.html',
-  styleUrls: ['./reportcommande.component.css']
+  styleUrls: ['../../assets/css/bootstrap.min.css']
 })
 export class ReportcommandeComponent implements OnInit {
 

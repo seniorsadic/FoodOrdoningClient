@@ -41,6 +41,7 @@ const appRoutes: Routes = [
     { path: 'catalogues', component: CatalogueComponent},
     { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
     { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
+    { path: 'reportcommande', component: ReportcommandeComponent},
     { path: 'home', component: AccueilComponent},
     { path: '', redirectTo: '/home', pathMatch: 'full'}
   ];
