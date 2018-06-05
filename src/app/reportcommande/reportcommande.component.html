@@ -10,7 +10,31 @@
           <option *ngFor="let reportlist of reportCommandeResults" >{{reportlist.date}}</option>
         </select>
       </div>
+      <div class="form-group">
+        <select class="form-control" id="exampleFormControlSelect2">
+          <option *ngFor="let reportlist of reportCommandeResults" >{{reportlist.categorie}}</option>
+        </select>
+      </div>
     </div>
+    <div>
+      <table >
+        <thead>
+        <tr>
+          <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
+        </tr>
+        </thead>
+        <tr *ngFor="let reportlist of reportCommandeResults">
+          <td>{{reportlist.numero}} </td>
+          <td>{{reportlist.categorie}} </td>
+          <td>{{reportlist.designation}} </td>
+          <td>{{reportlist.quantite}} </td>
+          <td>{{reportlist.prixUnitaire}} </td>
+          <td>{{reportlist.prixTotal}} </td>
+          <td>{{reportlist.date}} </td>
+          <td>{{reportlist.prenom}} {{reportlist.nom}} </td>
+        </tr>
+      </table>
+      </div>
 </div>
 
 
