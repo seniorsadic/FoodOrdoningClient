@@ -28,6 +28,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ListeproduitsComponent } from './menu/listeproduits/listeproduits.component';
 import { AddArticleComponent } from './menu/add-article/add-article.component';
 import { ReportCommandeService } from '../servives/reportcommande.services';
+import { EmployeesService } from '../servives/employee.services';
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
@@ -72,7 +73,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService,EmployeesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,38 +4,47 @@
   </div>
 </div>
   <div class="container">
-    <div class="col s12">
-      <div class="form-group">
-        <select class="form-control" id="exampleFormControlSelect2">
-          <option *ngFor="let reportlist of reportCommandeResults" >{{reportlist.date}}</option>
-        </select>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="date" class="form-control"/>  
+        </div>
       </div>
-      <div class="form-group">
-        <select class="form-control" id="exampleFormControlSelect2">
-          <option *ngFor="let reportlist of reportCommandeResults" >{{reportlist.categorie}}</option>
-        </select>
+      <div class="col-md-4">
+        <div class="form-group">
+          <select class="form-control" id="exampleFormControlSelect2" #t (change)="chargerCommande1(t.value)">
+            <option *ngFor="let categorielist of listeCategoies" value="{{categorielist.nom}}">{{categorielist.nom}}</option>
+          </select>  
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect3" #ser (change)="charger2(ser.value)">
+              <option *ngFor="let serveurlist of listeServeurs" value="{{serveurlist.nom}}" >{{serveurlist.prenom}} {{serveurlist.nom}}</option>
+            </select>  
+          </div>
       </div>
     </div>
-    <div>
-      <table >
+    <div class="row">
+      <table>
         <thead>
         <tr>
           <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
         </tr>
         </thead>
-        <tr *ngFor="let reportlist of reportCommandeResults">
-          <td>{{reportlist.numero}} </td>
-          <td>{{reportlist.categorie}} </td>
-          <td>{{reportlist.designation}} </td>
-          <td>{{reportlist.quantite}} </td>
-          <td>{{reportlist.prixUnitaire}} </td>
-          <td>{{reportlist.prixTotal}} </td>
-          <td>{{reportlist.date}} </td>
-          <td>{{reportlist.prenom}} {{reportlist.nom}} </td>
+        <tr  *ngFor="let reportlist of reportCommandeResults">
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)" >{{reportlist.numero}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)" >{{reportlist.categorie}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.designation}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.quantite}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prixUnitaire}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prixTotal}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.date.substring(0,10)}} </td>
+            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prenom}} {{reportlist.nom}} </td>
         </tr>
       </table>
       </div>
-</div>
+    </div>
 
 
 
