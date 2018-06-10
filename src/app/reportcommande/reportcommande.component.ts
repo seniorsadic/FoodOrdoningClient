@@ -28,7 +28,7 @@ export class ReportcommandeComponent implements OnInit {
   public randomizeType():void {
     this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
   }
-  
+
   listeCommandeRepo:Array<any>=[];
   listeCategoriesCommandeRepo:Array<any>=[];
   listeQuantiteCommandeRepo:Array<any>=[];
@@ -139,6 +139,7 @@ export class ReportcommandeComponent implements OnInit {
         }
       }
     }
+    this.lineChartData.pop();
     this.lineChartData.push(this.listeQuantiteCommandeRepo)
   }
 
