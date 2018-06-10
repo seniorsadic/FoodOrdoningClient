@@ -29,6 +29,8 @@ import { ListeproduitsComponent } from './menu/listeproduits/listeproduits.compo
 import { AddArticleComponent } from './menu/add-article/add-article.component';
 import { ReportCommandeService } from '../servives/reportcommande.services';
 import { EmployeesService } from '../servives/employee.services';
+import { DatePipe } from '@angular/common';
+import {ChartsModule} from "ng2-charts";
 
 const appRoutes: Routes = [
     { path: 'articles', component: ArticleComponent},
@@ -71,9 +73,9 @@ const appRoutes: Routes = [
     ReportcommandeComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule
+    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService,EmployeesService],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService,EmployeesService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

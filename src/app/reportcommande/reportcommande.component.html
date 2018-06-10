@@ -7,19 +7,21 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <input type="date" class="form-control"/>  
+          <input #datecommande type="date" class="form-control" (change)="chargerdate(datecommande.value)"/>  
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <select class="form-control" id="exampleFormControlSelect2" #t (change)="chargerCommande1(t.value)">
+              <option value=""></option>
             <option *ngFor="let categorielist of listeCategoies" value="{{categorielist.nom}}">{{categorielist.nom}}</option>
           </select>  
         </div>
       </div>
       <div class="col-md-4">
           <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect3" #ser (change)="charger2(ser.value)">
+            <select class="form-control" id="exampleFormControlSelect3" #ser (change)="chargerServeur1(ser.value)">
+              <option value=""></option>
               <option *ngFor="let serveurlist of listeServeurs" value="{{serveurlist.nom}}" >{{serveurlist.prenom}} {{serveurlist.nom}}</option>
             </select>  
           </div>
@@ -33,18 +35,28 @@
         </tr>
         </thead>
         <tr  *ngFor="let reportlist of reportCommandeResults">
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)" >{{reportlist.numero}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)" >{{reportlist.categorie}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.designation}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.quantite}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prixUnitaire}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prixTotal}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.date.substring(0,10)}} </td>
-            <td  *ngIf="(reportlist.categorie==categories && reportlist.nom=='') ||(reportlist.categorie==categories && reportlist.nom==date)">{{reportlist.prenom}} {{reportlist.nom}} </td>
+            <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
+            <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.designation}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.quantite}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.prixUnitaire}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.prixTotal}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
+            <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
         </tr>
       </table>
-      </div>
     </div>
+    </div>
+
+      <div>
+          <canvas baseChart
+                      [data]="lineChartData"
+                      [labels]="listeCategoriesCommandeRepo"
+                      [options]="lineChartOptions"
+                      [chartType]="lineChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+        </div>
 
 
 
