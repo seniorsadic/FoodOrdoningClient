@@ -47,6 +47,7 @@ const appRoutes: Routes = [
     { path: 'reportcommande', component: ReportcommandeComponent},
     { path: 'home', component: AccueilComponent},
     { path: '', redirectTo: '/home', pathMatch: 'full'}
+    
   ];
 
 

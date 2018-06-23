@@ -5,6 +5,7 @@ import { Response } from '@angular/http';
 import { CategorieService } from '../../servives/categorie.services';
 import { EmployeesService } from '../../servives/employee.services';
 import { DatePipe } from '@angular/common'
+import { ArticleService } from '../../servives/article.services';
 
 @Component({
   selector: 'app-reportcommande',
@@ -16,17 +17,18 @@ export class ReportcommandeComponent implements OnInit {
   reportCommandeResults:any;
   listeCategoies:any;
   listeServeurs:any;
+  listeArticles:any;
   categories:string='';
   employe:string='';
   datecommande:string='';
   // lineChart
-  public lineChartData:Array<any> = [];
+  public barChartData:Array<any> = [];
 
   //public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartType:string = 'line';
+  public lineChartType:string = 'bar';
 
   public randomizeType():void {
-    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'line';
+    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'bar';
   }
 
   listeCommandeRepo:Array<any>=[];
@@ -34,12 +36,13 @@ export class ReportcommandeComponent implements OnInit {
   listeQuantiteCommandeRepo:Array<any>=[];
 
   constructor(public reportcommande:ReportCommandeService,public router:Router, 
-    public categorie:CategorieService,public serveur:EmployeesService,public datepipe: DatePipe) { }
+    public categorie:CategorieService,public serveur:EmployeesService,public datepipe: DatePipe, public article:ArticleService) { }
 
   ngOnInit() {
+    this.chargerCommande()
     this.chargerCategorie()
     this.chargerServeur()
-    this.chargerCommande()
+    this.chargerArticle()
     this.listecategorie();
   }
 
@@ -71,7 +74,13 @@ export class ReportcommandeComponent implements OnInit {
                 if(this.categories==valeur.categorie && this.employe==valeur.nom && this.datecommande==valeur.date.substring(0,10)){
                   return true;
                 }
+                else{
+                  if(this.categories==valeur.categorie && this.employe=='' && this.datecommande==valeur.date.substring(0,10)){
+                    return true;
+                  }
+                }
               }
+              
             }
           }
         }
@@ -90,6 +99,9 @@ export class ReportcommandeComponent implements OnInit {
 
   chargerCommande(){
     this.reportcommande.getReportCommande().subscribe((res:Response) => this.reportCommandeResults = res.json());
+  }
+  chargerArticle(){
+    this.article.getArticles().subscribe((res:Response) => this.listeArticles = res.json());
   }
 
   chargerCommande1(nom:string){
@@ -118,32 +130,37 @@ export class ReportcommandeComponent implements OnInit {
     this.listeCategoriesCommandeRepo =[];
     this.listeQuantiteCommandeRepo =[];
     if (this.datecommande!=''){
+      
       for(var i =0; i < this.reportCommandeResults.length; i++){
         if (this.datecommande==this.reportCommandeResults[i].date.substring(0,10)){
             this.listeCommandeRepo.push(this.reportCommandeResults[i]);
-        }
+        } 
       }
       for(var i =0; i < this.listeCommandeRepo.length; i++){
-        if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].categorie)){
-          this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].categorie);
-          this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].categorie));
+        if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+          this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+          this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
         }
       }
     }
     else{
       this.listeCommandeRepo=this.reportCommandeResults;
       for(var i =0; i < this.listeCommandeRepo.length; i++){
-        if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].categorie)){
-          this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].categorie);
-          this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].categorie));
+        if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+          this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+          this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
         }
       }
+  
+
     }
-    this.lineChartData.pop();
-    this.lineChartData.push(this.listeQuantiteCommandeRepo)
+    this.barChartData.pop()
+    this.barChartData.push(this.listeQuantiteCommandeRepo)
+    
+
   }
 
-  verifiercategorie(liste:any,valeur:string){
+verifiercategorie(liste:any,valeur:string){
     for(var i =0; i < liste.length; i++){
       if(liste[i]==valeur)
           return false;
@@ -154,7 +171,7 @@ export class ReportcommandeComponent implements OnInit {
   calculerquantite(liste:any,valeur:string){
     var quantite=0;
     for(var i =0; i < liste.length; i++){
-      if(liste[i].categorie==valeur)
+      if(liste[i].designation==valeur)
           quantite=quantite+parseInt(liste[i].quantite);
     }
     return quantite;

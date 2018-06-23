@@ -13,7 +13,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <select class="form-control" id="exampleFormControlSelect2" #t (change)="chargerCommande1(t.value)">
-              <option value=""></option>
+              <option value="">Filtrer par catégorie</option>
             <option *ngFor="let categorielist of listeCategoies" value="{{categorielist.nom}}">{{categorielist.nom}}</option>
           </select>  
         </div>
@@ -21,19 +21,20 @@
       <div class="col-md-4">
           <div class="form-group">
             <select class="form-control" id="exampleFormControlSelect3" #ser (change)="chargerServeur1(ser.value)">
-              <option value=""></option>
+              <option value="">Filtrer par serveur</option>
               <option *ngFor="let serveurlist of listeServeurs" value="{{serveurlist.nom}}" >{{serveurlist.prenom}} {{serveurlist.nom}}</option>
             </select>  
           </div>
       </div>
     </div>
-    <div class="row">
-      <table>
+    <div class="container" style="overflow-y:scroll; height: 389px">
+      <table  >
         <thead>
         <tr>
           <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
         </tr>
         </thead>
+        <tbody >
         <tr  *ngFor="let reportlist of reportCommandeResults">
             <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
             <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
@@ -44,19 +45,22 @@
             <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
             <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
         </tr>
+      </tbody>
       </table>
     </div>
-    </div>
+    <div class="row">
+      <canvas baseChart
+                  [data]="barChartData"
+                  [labels]="listeCategoriesCommandeRepo"
+                  [options]="lineChartOptions"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  </div>
+    
+    
 
-      <div>
-          <canvas baseChart
-                      [data]="lineChartData"
-                      [labels]="listeCategoriesCommandeRepo"
-                      [options]="lineChartOptions"
-                      [chartType]="lineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-        </div>
 
 
 
