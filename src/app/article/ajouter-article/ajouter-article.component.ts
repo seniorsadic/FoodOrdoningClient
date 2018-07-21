@@ -24,7 +24,7 @@ export class AjouterArticleComponent implements OnInit {
   }
 
   save(){
-    this.articleservice.saveArticle(this.article).subscribe((res:Response) => this.listeCategories = res.json());
+    this.articleservice.saveArticle(this.article).subscribe((res:Response) => this.article = res.json());
     console.log(this.article);
     this.router.navigate(['/articles']);
   }

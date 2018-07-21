@@ -26,6 +26,10 @@ export class RestaurantComponent implements OnInit {
     this.router.navigate(['/modifierrestaurant',id]);
   }
 
+  listCuisine(id:number){
+    this.router.navigate(['/listeCuisines',id]);
+  }
+
   deleteRestaurant(id:number){
     var resultat;
     swal({
