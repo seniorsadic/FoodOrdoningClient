@@ -1,7 +1,7 @@
 
 <div class="row">
     <div class="col s6 offset-s4">
-        <h1>Liste des Catalogues</h1>
+        <h1>Liste des Catalogues  {{nom}}</h1>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
       <td>{{a.nom}} </td>
       <td>{{a.id_resto.designation}} </td>
       <td>
-        <button (click)="updateCatalogue(a.id_catalogue)" class="clickable"><i class="material-icons">edit</i> </button> <a (click)="deleteCatalogue(a.id_catalogue)" class="clickable"><i class="material-icons">delete</i> </a>
+        <a (click)="updateCatalogue(a.id_catalogue)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="deleteCatalogue(a.id_catalogue)" class="clickable"><i class="material-icons">delete</i> </a>
       </td>
     </tr>
   </table>

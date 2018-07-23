@@ -11,10 +11,12 @@ import { Router } from '@angular/router';
 export class CatalogueComponent implements OnInit {
 
   listes:any;
+  nom:string;
 
   constructor(public catalogueservice:CatalogueService,public router:Router) { }
 
   ngOnInit() {
+      this.nom=localStorage.getItem('nom')
       this.charger()
   }
 

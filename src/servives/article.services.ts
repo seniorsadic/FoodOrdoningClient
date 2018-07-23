@@ -9,6 +9,11 @@ export class ArticleService {
 
   constructor(public http: Http) {}
 
+  tester(){
+    localStorage.setItem('nom','Aziz')
+    localStorage.setItem('prenom','Aziz')
+  }
+
   getArticles() {
     return this.http.get(this.URl+"articles");
   }

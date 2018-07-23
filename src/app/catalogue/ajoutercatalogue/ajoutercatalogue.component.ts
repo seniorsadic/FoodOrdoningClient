@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from '../../../servives/catalogue.services';
+import { CatalogueService } from '../../../servives/catalogue.services';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 import { Router } from '@angular/router';
 import { Catalogue } from '../../../model/model.catalogue';
 import { RestaurantService } from '../../../servives/restaurant.services';
@@ -8,7 +8,7 @@ import { Response } from '@angular/http';
 @Component({
   selector: 'app-ajoutercatalogue',
   templateUrl: './ajoutercatalogue.component.html',
-  styleUrls: ['./ajoutercatalogue.component.css']
+  styleUrls: ['../../../assets/css/bootstrap.min.css']
 })
 export class AjoutercatalogueComponent implements OnInit {
 

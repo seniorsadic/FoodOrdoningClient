@@ -8,7 +8,7 @@ import { Response } from '@angular/http';
 @Component({
   selector: 'app-modifierrcatalogue',
   templateUrl: './modifierrcatalogue.component.html',
-  styleUrls: ['./modifierrcatalogue.component.css']
+  styleUrls: ['../../../assets/css/bootstrap.min.css']
 })
 export class ModifierrcatalogueComponent implements OnInit {
 

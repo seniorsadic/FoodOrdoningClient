@@ -15,6 +15,7 @@ export class ArticleComponent implements OnInit {
   constructor(public articleservice:ArticleService,public router:Router) { }
 
   ngOnInit() {
+    this.articleservice.tester()
     this.charger();
   }
 

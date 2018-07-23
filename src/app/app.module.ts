@@ -26,6 +26,7 @@ import { AjoutercatalogueComponent } from './catalogue/ajoutercatalogue/ajouterc
 import { ModifierrcatalogueComponent } from './catalogue/modifierrcatalogue/modifierrcatalogue.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListeproduitsComponent } from './menu/listeproduits/listeproduits.component';
+import { EmployeesComponent } from './employees/employees.component';
 import { AddArticleComponent } from './menu/add-article/add-article.component';
 import { ReportCommandeService } from '../servives/reportcommande.services';
 import { EmployeesService } from '../servives/employee.services';
@@ -33,6 +34,7 @@ import { DatePipe } from '@angular/common';
 import {ChartsModule} from "ng2-charts";
 
 const appRoutes: Routes = [
+    { path: 'employees', component: EmployeesComponent},
     { path: 'articles', component: ArticleComponent},
     { path: 'addarticle/:id', component: AddArticleComponent},
     { path: 'menu', component: MenuComponent},
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     MenuComponent,
     ListeproduitsComponent,
     AddArticleComponent,
-    ReportcommandeComponent
+    ReportcommandeComponent,
+    EmployeesComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
