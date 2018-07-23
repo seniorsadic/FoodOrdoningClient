@@ -13,13 +13,17 @@ export class CuisineService {
   getCuisine() {
     return this.http.get(this.URl+"cuisines");
   }
+
+  getCuisineResto(id:number) {
+    return this.http.get(this.URl+"cuisinesbyresto/"+id);
+  }
  
   getCuisineById(id:number) {
     return this.http.get(this.URl+"cuisines/"+id);
   }
 
-  saveCuisine(cuisne:Cuisine) {
-    return this.http.post(this.URl+"cuiines",cuisne);
+  saveCuisine(cuisine:Cuisine) {
+    return this.http.post(this.URl+"cuisines",cuisine);
   }
 
   updateCuisine(cuisine:Cuisine) {

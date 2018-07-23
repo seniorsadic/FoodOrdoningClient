@@ -32,6 +32,10 @@ import { ReportCommandeService } from '../servives/reportcommande.services';
 import { EmployeesService } from '../servives/employee.services';
 import { DatePipe } from '@angular/common';
 import {ChartsModule} from "ng2-charts";
+import { CuisineComponent } from './cuisine/cuisine.component';
+import { CuisineService } from 'src/servives/cuisine.services';
+import { AjouterCuiniseComponent } from 'src/app/cuisine/ajouter/ajouter.component';
+
 
 const appRoutes: Routes = [
     { path: 'employees', component: EmployeesComponent},
@@ -42,7 +46,9 @@ const appRoutes: Routes = [
     { path: 'ajouterarticle', component: AjouterArticleComponent},
     { path: 'restaurants', component: RestaurantComponent},
     { path: 'ajouterrestaurant', component: AjouterComponent},
+    { path: 'ajoutercuisine/:id', component: AjouterCuiniseComponent},
     { path: 'modifierrestaurant/:id', component: ModifierComponent},
+    { path: 'listeCuisines/:id', component: CuisineComponent},
     { path: 'catalogues', component: CatalogueComponent},
     { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
     { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
@@ -74,12 +80,15 @@ const appRoutes: Routes = [
     ListeproduitsComponent,
     AddArticleComponent,
     ReportcommandeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    AjouterCuiniseComponent,
+    CuisineComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,ReportCommandeService,EmployeesService,DatePipe],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+ 

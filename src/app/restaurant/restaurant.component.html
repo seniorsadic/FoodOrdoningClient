@@ -10,7 +10,7 @@
   <table >
     <thead>
     <tr>
-      <th>Code</th><th>Designation</th> <th>Adresse</th> <th>Email</th><th>Téléphone</th> <th></th>
+      <th>Code</th><th>Designation</th> <th>Adresse</th> <th>Email</th><th>Téléphone</th><th>Cuisines</th> <th></th>
     </tr>
     </thead>
     <tr *ngFor="let a of listeRestaurants">
@@ -19,6 +19,9 @@
       <td>{{a.adresse}} </td>
       <td>{{a.email}} </td>
       <td>{{a.telephone}} </td>
+      <td>
+        <a (click)="listCuisine(a.id_resto)" class="clickable"><i class="material-icons">room_service</i> </a>
+      </td>
       <td>
         <a (click)="updateRestaurant(a.id_resto)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="deleteRestaurant(a.id_resto)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
       </td>
