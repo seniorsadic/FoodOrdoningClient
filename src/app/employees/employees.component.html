@@ -1,7 +1,7 @@
 
 <div class="row">
   <div class="col s6 offset-s4">
-      <h1>Liste des Employees</h1>
+      <h1>Liste des employes</h1>
   </div>
 </div>
 
@@ -10,23 +10,27 @@
 <table >
   <thead>
   <tr>
-    <th>Matricule</th><th>Nom</th><th>Prenom</th> <th>Email</th><th>Téléphone</th> <th></th>
+    <th>Matricule</th><th>Prénoms</th> <th>Nom</th> <th>Email</th><th>Téléphone</th><th>Fonction</th><th>Resto</th> <th>Cuisine</th><th></th>
   </tr>
   </thead>
-  <tr *ngFor="let a of listeEmployees">
+  <tr *ngFor="let a of listeemployees">
     <td>{{a.matricule}} </td>
-    <td>{{a.nom}} </td>
     <td>{{a.prenom}} </td>
+    <td>{{a.nom}} </td>
     <td>{{a.email}} </td>
     <td>{{a.telephone}} </td>
+   
+    <td>{{a.fonction}} </td>
+    <td>{{a.id_resto.designation}} </td>
+    <td>{{a.id_cuisine.nom}} </td>
     <td>
-      <a (click)="updateRestaurant(a.id_employe)" class="clickable"><i class="material-icons">whatshot</i> </a> <a (click)="updateRestaurant(a.id_employe)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="deleteRestaurant(a.id_employe)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
+      <a (click)="onEditEmployee(a.id_employe)" class="clickable"><i class="material-icons">edit</i> </a> <a (click)="onDeleteEmployee(a.id_employe)" class="clickable"><i class="material-icons">delete_sweep</i> </a>
     </td>
   </tr>
 </table>
 </div>
 <div class="fixed-action-btn">
-  <a routerLink="/ajouterrestaurant" class="btn-floating btn-large red" >
+  <a routerLink="/ajouteremploye" class="btn-floating btn-large red" >
     <i class="large material-icons">add</i>
   </a>
 </div>
