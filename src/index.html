@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MyApp</title>
+  <title>Food Ordening </title>
   <base href="/">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +33,13 @@
         direction: 'top'
         });
     }); 
+
+     document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, {
+           classes: 'select'
+        });
+    });
 
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.parallax');

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../servives/article.services';
 import { Response } from '@angular/http';
 import { Router } from '@angular/router';
+import { AuthentificationService } from '../../servives/auhentification.services';
 
 @Component({
   selector: 'app-article',
@@ -12,11 +13,12 @@ export class ArticleComponent implements OnInit {
 
   listearticles:any;
 
-  constructor(public articleservice:ArticleService,public router:Router) { }
+  constructor(public articleservice:ArticleService,public router:Router,public auth:AuthentificationService) { }
 
   ngOnInit() {
     this.articleservice.tester()
     this.charger();
+    console.log(this.auth.connection('Aziz','FR'));
   }
 
   charger(){

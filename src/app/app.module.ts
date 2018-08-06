@@ -35,10 +35,17 @@ import {ChartsModule} from "ng2-charts";
 import { CuisineComponent } from './cuisine/cuisine.component';
 import { CuisineService } from 'src/servives/cuisine.services';
 import { AjouterCuiniseComponent } from 'src/app/cuisine/ajouter/ajouter.component';
+import { AjouteremployeComponent } from 'src/app/employees/ajouteremploye/ajouteremploye.component';
+import { ModifieremployeComponent } from 'src/app/employees/modifieremploye/modifieremploye.component';
+import { ModifierCuisineComponent } from './cuisine/modifier-cuisine/modifier-cuisine.component';
+import { AuthentificationService } from '../servives/auhentification.services';
 
 
 const appRoutes: Routes = [
     { path: 'employees', component: EmployeesComponent},
+    { path: 'ajouteremploye', component: AjouteremployeComponent},
+    { path: 'cuisines', component: CuisineComponent},
+    { path: 'modifieremploye/:id', component: ModifieremployeComponent},
     { path: 'articles', component: ArticleComponent},
     { path: 'addarticle/:id', component: AddArticleComponent},
     { path: 'menu', component: MenuComponent},
@@ -47,6 +54,7 @@ const appRoutes: Routes = [
     { path: 'restaurants', component: RestaurantComponent},
     { path: 'ajouterrestaurant', component: AjouterComponent},
     { path: 'ajoutercuisine/:id', component: AjouterCuiniseComponent},
+    { path: 'modifiercuisine/:id', component: ModifierCuisineComponent},
     { path: 'modifierrestaurant/:id', component: ModifierComponent},
     { path: 'listeCuisines/:id', component: CuisineComponent},
     { path: 'catalogues', component: CatalogueComponent},
@@ -82,12 +90,15 @@ const appRoutes: Routes = [
     ReportcommandeComponent,
     EmployeesComponent,
     AjouterCuiniseComponent,
-    CuisineComponent
+    CuisineComponent,
+    AjouteremployeComponent,
+    ModifieremployeComponent,
+    ModifierCuisineComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe],
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe,AuthentificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

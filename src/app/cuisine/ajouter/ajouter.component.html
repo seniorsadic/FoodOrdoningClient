@@ -14,15 +14,15 @@
           </div>
           <div class="input-field col s12">
             <i class="material-icons prefix">local_dining</i>
-            <input [(ngModel)]="cuisine.type" id="local_dining" type="text" class="validate">
-            <label for="local_dining">Type</label>
+            <select [(ngModel)]="cuisine.type"  id="exampleFormControlSelect1">
+                <option  disabled selected>Type de cuisine</option>
+                <option  >Type 1</option>
+                <option  >Type 2</option>
+              </select>
           </div>
          
         </div>
         <div class="form-group">
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option *ngFor="let cuisine of listeCuisines" >{{cuisine.nom}}</option>
-          </select>
         </div>
         <div class="row">
             <button class="btn waves-effect waves-light" (click)="save()" name="action">Ajouter
