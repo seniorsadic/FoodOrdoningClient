@@ -50,10 +50,12 @@
     </div>
     <div class="row">
       <canvas baseChart
-                  [data]="barChartData"
+     
+                  [chartType]="ChartType"
+                  [datasets]="barChartData"
                   [labels]="listeCategoriesCommandeRepo"
-                  [options]="lineChartOptions"
-                  [chartType]="lineChartType"
+                  [options]="ChartOptions"
+                  [legend]="true"
                   (chartHover)="chartHovered($event)"
                   (chartClick)="chartClicked($event)"></canvas>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ReportCommandeService } from '../../servives/reportcommande.services';
 import { Router } from '@angular/router';
 import { Response } from '@angular/http';
@@ -22,18 +22,23 @@ export class ReportcommandeComponent implements OnInit {
   employe:string='';
   datecommande:string='';
   // lineChart
-  public barChartData:Array<any> = [];
+  public barChartData:Array<any>=[];
+  public barChartLabels:Array<any>=[];
 
   //public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartType:string = 'bar';
+  public ChartType:string = 'bar';
 
-  public randomizeType():void {
-    this.lineChartType = this.lineChartType === 'line' ? 'bar' : 'bar';
-  }
-
+  // public randomizeType():void {
+  //   this.ChartType = this.ChartType === 'line' ? 'bar' : 'bar';
+  // }
+  public chartOptions:any = {
+    responsive: true
+};
   listeCommandeRepo:Array<any>=[];
-  listeCategoriesCommandeRepo:Array<any>=[];
-  listeQuantiteCommandeRepo:Array<any>=[];
+  public listeCategoriesCommandeRepo=[];
+  public listeQuantiteCommandeRepo=[];
+  listquantite:Array<any>=[];
+  listelements:Array<any>=[];
 
   constructor(public reportcommande:ReportCommandeService,public router:Router, 
     public categorie:CategorieService,public serveur:EmployeesService,public datepipe: DatePipe, public article:ArticleService) { }
@@ -138,42 +143,58 @@ export class ReportcommandeComponent implements OnInit {
       }
       for(var i =0; i < this.listeCommandeRepo.length; i++){
         if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+        
           this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
-          this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
-        }
+         
+            this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+          } 
       }
     }
     else{
       this.listeCommandeRepo=this.reportCommandeResults;
       for(var i =0; i < this.listeCommandeRepo.length; i++){
+        
         if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
           this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+          
           this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
-        }
+        
+      }
       }
   
 
     }
+    //this.barChartLabels.pop()
     this.barChartData.pop()
-    this.barChartData.push(this.listeQuantiteCommandeRepo)
+    this.barChartLabels.push(this.listeCategoriesCommandeRepo)
+
+    this.barChartData.push({data:this.listeQuantiteCommandeRepo,label:'Quantité'})
+    
+    
+   
+    console.log(this.barChartData)  
     
 
   }
 
 verifiercategorie(liste:any,valeur:string){
+  var bool=true
     for(var i =0; i < liste.length; i++){
       if(liste[i]==valeur)
-          return false;
+          bool= false;
     }
-    return true;
+    return bool
+    
   }
 
   calculerquantite(liste:any,valeur:string){
-    var quantite=0;
+    var quantite=0
     for(var i =0; i < liste.length; i++){
       if(liste[i].designation==valeur)
-          quantite=quantite+parseInt(liste[i].quantite);
+      quantite= quantite + parseInt(liste[i].quantite);
+          
     }
+    
     return quantite;
   }
  
