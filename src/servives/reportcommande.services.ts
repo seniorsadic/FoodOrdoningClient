@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http,Headers} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 /* import {Article} from "../model/model.article"; */
 
 @Injectable()
@@ -7,7 +7,7 @@ export class ReportCommandeService {
 
   URl:string="http://www.sadicomputing.com/FoodOrdering/web/";
 
-  constructor(public http: Http) {}
+  constructor(public http: HttpClient) {}
 
   getReportCommande() {
     return this.http.get(this.URl+"reportcommande");

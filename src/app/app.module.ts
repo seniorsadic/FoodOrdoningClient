@@ -39,6 +39,7 @@ import { AjouteremployeComponent } from 'src/app/employees/ajouteremploye/ajoute
 import { ModifieremployeComponent } from 'src/app/employees/modifieremploye/modifieremploye.component';
 import { ModifierCuisineComponent } from './cuisine/modifier-cuisine/modifier-cuisine.component';
 import { AuthentificationService } from '../servives/auhentification.services';
+import { toDate } from '@angular/common/src/i18n/format_date';
 
 
 const appRoutes: Routes = [
@@ -96,7 +97,8 @@ const appRoutes: Routes = [
     ModifierCuisineComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
+    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, 
+    HttpClientModule, ChartsModule
   ],
   providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe,AuthentificationService],
   bootstrap: [AppComponent]
