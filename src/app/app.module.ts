@@ -38,7 +38,9 @@ import { AjouterCuiniseComponent } from 'src/app/cuisine/ajouter/ajouter.compone
 import { AjouteremployeComponent } from 'src/app/employees/ajouteremploye/ajouteremploye.component';
 import { ModifieremployeComponent } from 'src/app/employees/modifieremploye/modifieremploye.component';
 import { ModifierCuisineComponent } from './cuisine/modifier-cuisine/modifier-cuisine.component';
-import { AuthentificationService } from '../servives/auhentification.services';
+import { AuthentificationService, AUTH_PROVIDERS } from '../servives/auhentification.services';
+import { LoginComponent } from './login/login.component';
+import { LoggedInGuard } from './login-in.guard';
 
 
 const appRoutes: Routes = [
@@ -60,11 +62,13 @@ const appRoutes: Routes = [
     { path: 'catalogues', component: CatalogueComponent},
     { path: 'ajoutercatalogue', component: AjoutercatalogueComponent},
     { path: 'modifiercatalogue/:id', component: ModifierrcatalogueComponent},
-    { path: 'reportcommande', component: ReportcommandeComponent},
+    { path: 'reportcommande', component: ReportcommandeComponent,canActivate: [ LoggedInGuard ]},
     { path: 'home', component: AccueilComponent},
+    { path: 'authentification', component: LoginComponent},
     { path: '', redirectTo: '/home', pathMatch: 'full'}
     
   ];
+
 
 
 @NgModule({
@@ -93,13 +97,16 @@ const appRoutes: Routes = [
     CuisineComponent,
     AjouteremployeComponent,
     ModifieremployeComponent,
-    ModifierCuisineComponent
+    ModifierCuisineComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
   ],
-  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe,AuthentificationService],
-  bootstrap: [AppComponent]
+  providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe,AuthentificationService,
+    AUTH_PROVIDERS,LoggedInGuard],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
  

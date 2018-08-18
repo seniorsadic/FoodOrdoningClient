@@ -3,6 +3,7 @@ import { ArticleService } from '../../servives/article.services';
 import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../servives/auhentification.services';
+import { Compte } from '../../model/model.compte';
 
 @Component({
   selector: 'app-article',
@@ -18,7 +19,8 @@ export class ArticleComponent implements OnInit {
   ngOnInit() {
     this.articleservice.tester()
     this.charger();
-    console.log(this.auth.connection('Aziz','FR'));
+    var users=this.auth.connection('l','p');
+    console.log(users);
   }
 
   charger(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthentificationService } from '../../servives/auhentification.services';
 
 @Component({
   selector: 'app-accueil',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth:AuthentificationService) { }
 
   ngOnInit() {
+    console.log(this.auth.isconnect())
   }
 
 }

@@ -154,8 +154,9 @@ export class ReportcommandeComponent implements OnInit {
   
 
     }
-    this.barChartData.pop()
-    this.barChartData.push(this.listeQuantiteCommandeRepo)
+    this.barChartData.pop();
+    this.barChartData=[
+      {data: this.listeQuantiteCommandeRepo, label: 'Manger'}];
     
 
   }
