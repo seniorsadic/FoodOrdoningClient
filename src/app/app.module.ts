@@ -101,7 +101,8 @@ const appRoutes: Routes = [
     LoginComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, HttpClientModule, ChartsModule
+    BrowserModule,RouterModule.forRoot(appRoutes),HttpModule, FormsModule, 
+    HttpClientModule, ChartsModule
   ],
   providers: [ArticleService, CategorieService, RestaurantService,CatalogueService,CuisineService,ReportCommandeService,EmployeesService,DatePipe,AuthentificationService,
     AUTH_PROVIDERS,LoggedInGuard],
