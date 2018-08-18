@@ -18,25 +18,33 @@ export class ReportcommandeComponent implements OnInit {
   listeCategoies:any;
   listeServeurs:any;
   listeArticles:any;
-  categories:string='';
+  categories:string='Plats du jour';
   employe:string='';
   datecommande:string='';
   // lineChart
   public barChartData:Array<any>=[];
   public barChartLabels:Array<any>=[];
+  public pieChartData:Array<any>=[];
 
   //public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public ChartType:string = 'bar';
-
+  public chartPieType:string='pie';
   // public randomizeType():void {
   //   this.ChartType = this.ChartType === 'line' ? 'bar' : 'bar';
   // }
   public chartOptions:any = {
     responsive: true
 };
+public chartColors:Array<any> = [{
+  hoverBorderColor: ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'],
+  hoverBorderWidth: 0,
+  backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+  hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5","#616774"]
+}];
   listeCommandeRepo:Array<any>=[];
   public listeCategoriesCommandeRepo=[];
   public listeQuantiteCommandeRepo=[];
+  public listeMontantCommandeRepo=[];
   listquantite:Array<any>=[];
   listelements:Array<any>=[];
 
@@ -83,6 +91,7 @@ export class ReportcommandeComponent implements OnInit {
                   if(this.categories==valeur.categorie && this.employe=='' && this.datecommande==valeur.date.substring(0,10)){
                     return true;
                   }
+
                 }
               }
               
@@ -106,7 +115,8 @@ export class ReportcommandeComponent implements OnInit {
     this.reportcommande.getReportCommande()
     .subscribe( data=>{
       this.reportCommandeResults=data;
-      this.listecategorie();
+      this.listecategorieQuantite();
+      this.listecategorieMontant();
    });
   }
   chargerArticle(){
@@ -115,13 +125,15 @@ export class ReportcommandeComponent implements OnInit {
 
   chargerCommande1(nom:string){
     this.categories=nom;
-    this.listecategorie()
+    this.listecategorieQuantite();
+    this.listecategorieMontant();
   }
 
   chargerServeur1(nom:string)
   {
     this.employe=nom;
-    this.listecategorie()
+    this.listecategorieQuantite();
+    this.listecategorieMontant();
   }
 
   chargerdate(nom:string){
@@ -134,10 +146,11 @@ export class ReportcommandeComponent implements OnInit {
       this.datecommande=this.datepipe.transform(event1, 'dd-MM-yyyy');
     }
     console.log(this.datecommande)
-    this.listecategorie()
+    this.listecategorieQuantite();
+    this.listecategorieMontant();
   }
 
-  listecategorie(){
+  listecategorieQuantite(){
     this.listeCommandeRepo =[];
     this.listeCategoriesCommandeRepo =[];
     this.listeQuantiteCommandeRepo =[];
@@ -273,13 +286,18 @@ export class ReportcommandeComponent implements OnInit {
                   }
                 }
                 else{
-                  
                   for(var i =0; i < this.reportCommandeResults.length; i++){
-                    if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.reportCommandeResults[i].designation)){
+                    if (this.reportCommandeResults[i].categorie==this.categories){
+                        this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+                    }
+                  } 
+                  
+                  for(var i =0; i < this.listeCommandeRepo.length; i++){
+                    if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
                     
-                      this.listeCategoriesCommandeRepo.push(this.reportCommandeResults[i].designation);
+                      this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
                      
-                        this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.reportCommandeResults,this.reportCommandeResults[i].designation));
+                        this.listeQuantiteCommandeRepo.push(this.calculerquantite(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
                       } 
                   }
                 }
@@ -294,14 +312,181 @@ export class ReportcommandeComponent implements OnInit {
 
     }
     //this.barChartLabels.pop()
-    this.barChartData.pop()
-    this.barChartLabels.push(this.listeCategoriesCommandeRepo)
+    this.pieChartData.pop()
+   
 
-    this.barChartData.push({data:this.listeQuantiteCommandeRepo,label:'Quantité'})
-    
-    
+    this.pieChartData.push(this.listeQuantiteCommandeRepo)
    
     console.log(this.barChartData)  
+    
+
+  }
+  listecategorieMontant(){
+    this.listeCommandeRepo =[];
+    this.listeCategoriesCommandeRepo =[];
+    this.listeMontantCommandeRepo =[];
+    console.log(this.reportCommandeResults)
+
+     if (this.datecommande!=''&&this.categories!=''&&this.employe!=''){
+      
+      for(var i =0; i < this.reportCommandeResults.length; i++){
+        if (this.datecommande==this.reportCommandeResults[i].date.substring(0,10)
+           &&this.categories==this.reportCommandeResults[i].categorie&&this.employe==this.reportCommandeResults[i].nom){
+            this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+        } 
+
+      }
+      for(var i =0; i < this.listeCommandeRepo.length; i++){
+        if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+        
+          this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+         
+            this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+          } 
+      }
+    }
+    else {
+      if (this.datecommande!=''&&this.categories!=''&&this.employe==''){
+      
+        for(var i =0; i < this.reportCommandeResults.length; i++){
+          if (this.datecommande==this.reportCommandeResults[i].date.substring(0,10)
+             &&this.categories==this.reportCommandeResults[i].categorie){
+              this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+          } 
+  
+        }
+        for(var i =0; i < this.listeCommandeRepo.length; i++){
+          if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+          
+            this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+           
+              this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+            } 
+        }
+      }
+      else {
+        if (this.datecommande!=''&&this.categories==''&&this.employe==''){
+        
+          for(var i =0; i < this.reportCommandeResults.length; i++){
+            if (this.datecommande==this.reportCommandeResults[i].date.substring(0,10)
+               ){
+                this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+            } 
+    
+          }
+          for(var i =0; i < this.listeCommandeRepo.length; i++){
+            if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+            
+              this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+             
+                this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+              } 
+          }
+        }
+        else{
+          if (this.datecommande==''&&this.categories!=''&&this.employe!=''){
+      
+            for(var i =0; i < this.reportCommandeResults.length; i++){
+              if (this.categories==this.reportCommandeResults[i].categorie&&this.employe==this.reportCommandeResults[i].nom){
+                  this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+              } 
+      
+            }
+            for(var i =0; i < this.listeCommandeRepo.length; i++){
+              if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+              
+                this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+               
+                  this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+                } 
+            }
+          }
+          else{
+            if (this.datecommande==''&&this.categories==''&&this.employe!=''){
+      
+              for(var i =0; i < this.reportCommandeResults.length; i++){
+                if (this.employe==this.reportCommandeResults[i].nom){
+                    this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+                } 
+        
+              }
+              for(var i =0; i < this.listeCommandeRepo.length; i++){
+                if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+                
+                  this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+                 
+                    this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+                  } 
+              }
+            }
+            else{
+              if (this.datecommande==''&&this.categories!=''&&this.employe==''){
+      
+                for(var i =0; i < this.reportCommandeResults.length; i++){
+                  if (this.categories==this.reportCommandeResults[i].categorie){
+                      this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+                  } 
+          
+                }
+                for(var i =0; i < this.listeCommandeRepo.length; i++){
+                  if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+                  
+                    this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+                   
+                      this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+                    } 
+                }
+              }
+              else{
+                if (this.datecommande!=''&&this.categories==''&&this.employe!=''){
+      
+                  for(var i =0; i < this.reportCommandeResults.length; i++){
+                    if (this.datecommande==this.reportCommandeResults[i].date.substring(0,10)
+                       &&this.employe==this.reportCommandeResults[i].nom){
+                        this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+                    } 
+            
+                  }
+                  for(var i =0; i < this.listeCommandeRepo.length; i++){
+                    if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+                    
+                      this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+                     
+                        this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+                      } 
+                  }
+                }
+                else{
+                  for(var i =0; i < this.reportCommandeResults.length; i++){
+                    if (this.reportCommandeResults[i].categorie==this.categories){
+                        this.listeCommandeRepo.push(this.reportCommandeResults[i]);
+                    }
+                  } 
+                  
+                  for(var i =0; i < this.listeCommandeRepo.length; i++){
+                    if(this.verifiercategorie(this.listeCategoriesCommandeRepo,this.listeCommandeRepo[i].designation)){
+                    
+                      this.listeCategoriesCommandeRepo.push(this.listeCommandeRepo[i].designation);
+                     
+                        this.listeMontantCommandeRepo.push(this.calculerMontant(this.listeCommandeRepo,this.listeCommandeRepo[i].designation));
+                      } 
+                  }
+                }
+              }
+            }
+          }
+        }
+    
+  
+      }
+  
+
+    }
+    //this.barChartLabels.pop()
+    
+    this.barChartData.pop()
+    this.barChartData.push({data:this.listeMontantCommandeRepo, label:'Montant Total'})
+  
     
 
   }
@@ -326,5 +511,14 @@ verifiercategorie(liste:any,valeur:string){
     
     return quantite;
   }
- 
+  calculerMontant(liste:any,valeur:string){
+    var montant=0.00
+    for(var i =0; i < liste.length; i++){
+      if(liste[i].designation==valeur)
+      montant= montant + parseInt(liste[i].prixTotal);
+          
+    }
+    
+    return montant;
+  }
 }

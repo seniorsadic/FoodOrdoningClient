@@ -27,38 +27,54 @@
           </div>
       </div>
     </div>
-    <div class="container" style="overflow-y:scroll; height: 389px">
-      <table  >
-        <thead>
-        <tr>
-          <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
-        </tr>
-        </thead>
-        <tbody >
-        <tr  *ngFor="let reportlist of reportCommandeResults">
-            <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
-            <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.designation}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.quantite}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.prixUnitaire}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.prixTotal}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
-            <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    
     <div class="row">
-      <canvas baseChart
+        <div class="col-md-7">
+            <canvas baseChart
      
-                  [chartType]="ChartType"
-                  [datasets]="barChartData"
-                  [labels]="listeCategoriesCommandeRepo"
-                  [options]="ChartOptions"
-                  [legend]="true"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
-  </div>
+            [chartType]="ChartType"
+            [datasets]="barChartData"
+            [labels]="listeCategoriesCommandeRepo"
+            [options]="ChartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <div class="col-md-5">
+            <canvas baseChart
+     
+            [chartType]="chartPieType"
+            [data]="pieChartData"
+            [labels]="listeCategoriesCommandeRepo"
+            [colors]="chartColors"
+            [options]="ChartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+    </div>
+    <div class="container" style="overflow-y:scroll; height: 200px; align-self: center">
+        <table  >
+          <thead>
+          <tr>
+            <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
+          </tr>
+          </thead>
+          <tbody >
+          <tr  *ngFor="let reportlist of reportCommandeResults">
+              <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
+              <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.designation}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.quantite}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.prixUnitaire}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.prixTotal}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
+              <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    
   </div>
     
     
