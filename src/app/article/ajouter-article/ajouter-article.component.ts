@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-ajouter-article',
   templateUrl: './ajouter-article.component.html',
-  styleUrls: ['../../../assets/css/bootstrap.min.css']
+  styleUrls: ['./ajouter-article.component.css']
 })
 export class AjouterArticleComponent implements OnInit {
 
