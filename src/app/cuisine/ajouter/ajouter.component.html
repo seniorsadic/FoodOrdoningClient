@@ -1,35 +1,38 @@
-<div class="row">
-    <div class="col s6 offset-s4">
-        <h1>Ajouter Cuisine {{idResto}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col md-12 ">
+              <div class="outer-div">
+              <div class="card centrer">
+                <div class="card-content">
+                  <span class="card-title">Ajouter Cuisine {{idResto}}</span>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input [(ngModel)]="cuisine.nom" id="icon_prefix" type="text" class="validate">
+                      <label for="icon_prefix">Nom</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">local_dining</i>
+                      <select [(ngModel)]="cuisine.type"  id="exampleFormControlSelect1">
+                          <option  disabled selected>Type de cuisine</option>
+                          <option  >Type 1</option>
+                          <option  >Type 2</option>
+                        </select>
+                    </div>
+                  
+                  </div>
+                  <div class="form-group">
+                  </div>
+                  <div class="row">
+                      <button class="btn waves-effect waves-light" (click)="save()" name="action">Ajouter
+                        <i class="material-icons right">send</i>
+                      </button>
+                  </div>
+                </div>
     </div>
+  </div>
 </div>
-
-<div class="container">
-      <div class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="cuisine.nom" id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">Nom</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">local_dining</i>
-            <select [(ngModel)]="cuisine.type"  id="exampleFormControlSelect1">
-                <option  disabled selected>Type de cuisine</option>
-                <option  >Type 1</option>
-                <option  >Type 2</option>
-              </select>
-          </div>
-         
-        </div>
-        <div class="form-group">
-        </div>
-        <div class="row">
-            <button class="btn waves-effect waves-light" (click)="save()" name="action">Ajouter
-              <i class="material-icons right">send</i>
-            </button>
-        </div>
-      </div>
+</div>
 </div>
 
 
