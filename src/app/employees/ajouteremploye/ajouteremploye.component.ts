@@ -10,7 +10,7 @@ import { Response } from '@angular/http';
 @Component({
   selector: 'app-ajouteremploye',
   templateUrl: './ajouteremploye.component.html',
-  styleUrls: ['../../../assets/css/bootstrap.min.css']
+  styleUrls: ['./ajouteremploye.component.css']
 })
 export class AjouteremployeComponent implements OnInit {
   employe:Employe;

@@ -1,48 +1,52 @@
-<div class="row">
-    <div class="col s6 offset-s4">
-        <h1>Modifier Restaurant</h1>
-    </div>
-</div>
 
-<div class="container">
-      <div class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">account_circle</i>
-            <input placeholder="Placeholder" [(ngModel)]="restaurant.designation" type="text" class="validate">
-            <label >Désignation</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">add_location</i>
-            <input placeholder="Placeholder" [(ngModel)]="restaurant.adresse" type="text" class="validate">
-            <label >Adresse</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">email</i>
-            <input placeholder="Placeholder" [(ngModel)]="restaurant.email" type="email" class="validate">
-            <label >Email</label>
-          </div>
-          <div class="input-field col s12">
-            <i class="material-icons prefix">local_phone</i>
-            <input placeholder="Placeholder" [(ngModel)]="restaurant.telephone" type="tel" class="validate">
-            <label >Téléphone</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s2">
-            <button class="btn waves-effect waves-light" (click)="modifier()" name="action">Modifier
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-          <div>
-          </div>
-          <div>
-            <button class="btn waves-effect blue accent-4" (click)="annuler()" name="action">Annuler
-              <i class="material-icons right">highlight_off</i>
-            </button>
-          </div>
+  <div class="container">
+      <div class="row">
+          <div class="col md-12 ">
+            <div class="outer-div">
+              <div class="card centrer">
+                <div class="card-content">
+                  <span class="card-title">Modifier Restaurant</span>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input placeholder="Placeholder" [(ngModel)]="restaurant.designation" type="text" class="validate">
+                      <label >Désignation</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">add_location</i>
+                      <input placeholder="Placeholder" [(ngModel)]="restaurant.adresse" type="text" class="validate">
+                      <label >Adresse</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">email</i>
+                      <input placeholder="Placeholder" [(ngModel)]="restaurant.email" type="email" class="validate">
+                      <label >Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix">local_phone</i>
+                      <input placeholder="Placeholder" [(ngModel)]="restaurant.telephone" type="tel" class="validate">
+                      <label >Téléphone</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s2">
+                      <button class="btn waves-effect waves-light" (click)="modifier()" name="action">Modifier
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                    <div>
+                    </div>
+                    <div>
+                      <button class="btn waves-effect blue accent-4" (click)="annuler()" name="action">Annuler
+                        <i class="material-icons right">highlight_off</i>
+                      </button>
+                    </div>
 
 
-        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
-</div>
+  </div>

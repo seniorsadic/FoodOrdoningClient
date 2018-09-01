@@ -1,75 +1,75 @@
-<div class="row">
-  <div class="col s6 offset-s4">
-      <h1>Ajouter Employee</h1>
-  </div>
-</div>
-
 <div class="container">
-  
-    <div class="col-lg-12">
+    <div class="row">
+        <div class="col md-12 ">
+          <div class="outer-div">
+          <div class="card centrer">
+            <div class="card-content">
+              <span class="card-title">Ajouter Employee</span>
     
-      <div class="row">
-        <div class="input-field col-12">
-            <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="employe.nom"  id="icon_prefix" type="text" class="form-control">
-            <label for="icon_prefix">Nom</label>
+                <div class="row">
+                  <div class="input-field col-12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input [(ngModel)]="employe.nom"  id="icon_prefix" type="text" class="form-control">
+                      <label for="icon_prefix">Nom</label>
+                  </div>
+                  <div class="input-field col-12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input [(ngModel)]="employe.prenom"  id="icon_prefix" type="text" class="form-control">
+                      <label for="icon_prefix">Prénoms</label>
+                  </div>
+                </div>
+                <div class="row">
+                  
+                  <div class="input-field col-12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input [(ngModel)]="employe.telephone"  id="icon_prefix" type="text" class="form-control">
+                      <label for="icon_prefix">Telephone</label>
+                  </div>
+                  <div class="input-field col-12">
+                    <!-- <input [(ngModel)]="employe.fonction" id="fonction" type="text" class="form-control"> -->
+                    <i class="material-icons prefix">account_circle</i>
+                    <select  [(ngModel)]="employe.fonction">
+                      <option  value="" disabled selected>Choisir Fonction</option>
+                      <option  value="Admin">ADMIN</option>
+                      <option  value="Comptable">COMPTABLE</option>
+                      <option  value="Cuisinier">CUISINIER</option>
+                      <option  value="Serveuse">SERVEUSE</option>
+                    </select>
+                  </div>
+                </div>
+              
+                <div class="row">
+                  <div class="input-field col-12">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input [(ngModel)]="employe.email"  id="icon_prefix" type="text" class="form-control">
+                      <label for="icon_prefix">Email</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col-12">
+                    <select class="form-control"  id="exampleFormControlSelect" [(ngModel)]="employe.id_resto">
+                      <option *ngFor="let resto of listeResto" value="{{resto.id_resto}}">{{resto.designation}}</option>
+                    </select>
+                  </div>
+                  <div class="input-field col-12">
+                    <select  id="exampleFormControlSelect1" [(ngModel)]="employe.id_cuisine">
+                      <option *ngFor="let cuisine of listeCuisine" value="{{cuisine.id_cuisine}}">{{cuisine.nom}}</option>
+                    </select>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" (click)="save()" name="action">Ajouter
+                      <i class="material-icons right">send</i>
+                    </button>
+                </div>
+           </div>
+          </div>
+          </div>
         </div>
-        <div class="input-field col-12">
-            <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="employe.prenom"  id="icon_prefix" type="text" class="form-control">
-            <label for="icon_prefix">Prénoms</label>
-        </div>
-      </div>
-      <div class="row">
-        
-        <div class="input-field col-12">
-            <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="employe.telephone"  id="icon_prefix" type="text" class="form-control">
-            <label for="icon_prefix">Telephone</label>
-        </div>
-         <div class="input-field col-12">
-          <!-- <input [(ngModel)]="employe.fonction" id="fonction" type="text" class="form-control"> -->
-          <i class="material-icons prefix">account_circle</i>
-          <select  [(ngModel)]="employe.fonction">
-            <option  value="" disabled selected>Choisir Fonction</option>
-            <option  value="Admin">ADMIN</option>
-            <option  value="Comptable">COMPTABLE</option>
-            <option  value="Cuisinier">CUISINIER</option>
-            <option  value="Serveuse">SERVEUSE</option>
-          </select>
-        </div>
-      </div>
-     
-      <div class="row">
-        <div class="input-field col-12">
-            <i class="material-icons prefix">account_circle</i>
-            <input [(ngModel)]="employe.email"  id="icon_prefix" type="text" class="form-control">
-            <label for="icon_prefix">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col-12">
-        
-          <select class="form-control" id="exampleFormControlSelect" [(ngModel)]="employe.id_resto">
-            <option *ngFor="let resto of listeResto" value="{{resto.id_resto}}">{{resto.designation}}</option>
-          </select>
-        </div>
-        <div class="input-field col-12">
-          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="employe.id_cuisine">
-            <option *ngFor="let cuisine of listeCuisine" value="{{cuisine.id_cuisine}}">{{cuisine.nom}}</option>
-          </select>
-        </div>
-        
-      </div>
-      <div class="row">
-          <button class="btn waves-effect waves-light" (click)="save()" name="action">Ajouter
-            <i class="material-icons right">send</i>
-          </button>
-      </div>
-      
-
     </div>
-  
 </div>
+
+
 
 
