@@ -6,73 +6,102 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="form-group">
-          <input #datecommande type="date" class="form-control" (change)="chargerdate(datecommande.value)"/>
-        </div>
+          <div class="card centrer">
+              <div class="card-content">
+                <div class="form-group">
+                  <input #datecommande type="date" class="form-control" (change)="chargerdate(datecommande.value)"/>
+                </div>
+              </div>
+            </div>
       </div>
       <div class="col-md-4">
-        <div class="form-group">
-          <select class="form-control" id="exampleFormControlSelect2" #t (change)="chargerCommande1(t.value)">
-              <option value="">Filtrer par catégorie</option>
-            <option *ngFor="let categorielist of listeCategoies" value="{{categorielist.nom}}">{{categorielist.nom}}</option>
-          </select>  
-        </div>
+          <div class="card centrer">
+              <div class="card-content">
+                <div class="form-group">
+                  <select class="form-control" id="exampleFormControlSelect2" #t (change)="chargerCommande1(t.value)">
+                      <option value="">Filtrer par catégorie</option>
+                    <option *ngFor="let categorielist of listeCategoies" value="{{categorielist.nom}}">{{categorielist.nom}}</option>
+                  </select>  
+                </div>
+                </div>
+            </div>
       </div>
       <div class="col-md-4">
-          <div class="form-group">
-            <select class="form-control" id="exampleFormControlSelect3" #ser (change)="chargerServeur1(ser.value)">
-              <option value="">Filtrer par serveur</option>
-              <option *ngFor="let serveurlist of listeServeurs" value="{{serveurlist.nom}}" >{{serveurlist.prenom}} {{serveurlist.nom}}</option>
-            </select>  
-          </div>
+          <div class="card centrer">
+              <div class="card-content">
+                  <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect3" #ser (change)="chargerServeur1(ser.value)">
+                      <option value="">Filtrer par serveur</option>
+                      <option *ngFor="let serveurlist of listeServeurs" value="{{serveurlist.nom}}" >{{serveurlist.prenom}} {{serveurlist.nom}}</option>
+                    </select>  
+                  </div>
+                  </div>
+                </div>
       </div>
     </div>
     
     <div class="row">
         <div class="col-md-7">
-            <canvas baseChart
-     
-            [chartType]="ChartType"
-            [datasets]="barChartData"
-            [labels]="listeCategoriesCommandeRepo"
-            [options]="ChartOptions"
-            [legend]="true"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+            <div class="card centrer">
+                <div class="card-content">
+                    <span class="card-title align-self: center">Nombre de vente par article</span>
+                    <canvas baseChart
+            
+                    [chartType]="ChartType"
+                    [datasets]="barChartData"
+                    [labels]="listeCategoriesCommandeRepo"
+                    [options]="ChartOptions"
+                    [legend]="true"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
         </div>
         <div class="col-md-5">
-            <canvas baseChart
-     
-            [chartType]="chartPieType"
-            [data]="pieChartData"
-            [labels]="listeCategoriesCommandeRepo"
-            [colors]="chartColors"
-            [options]="ChartOptions"
-            [legend]="true"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-        </div>
+            <div class="card centrer1">
+                <div class="card-content">
+                    <span class="card-title align-self: center">Montant des ventes par article</span>
+                        <canvas baseChart
+                
+                        [chartType]="chartPieType"
+                        [data]="pieChartData"
+                        [labels]="listeCategoriesCommandeRepo"
+                        [colors]="chartColors"
+                        [options]="ChartOptions"
+                        [legend]="true"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+            </div>
+          </div>
     </div>
     <div class="container" style="overflow-y:scroll; height: 200px; align-self: center">
-        <table  >
-          <thead>
-          <tr>
-            <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
-          </tr>
-          </thead>
-          <tbody >
-          <tr  *ngFor="let reportlist of reportCommandeResults">
-              <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
-              <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.designation}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.quantite}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.prixUnitaire}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.prixTotal}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
-              <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
-          </tr>
-        </tbody>
-        </table>
+        <div class="outer-div">
+            <div class="card centrer">
+              <div class="card-content">
+                <span class="card-title align-self: center">Détails des vente</span>
+                    <table  >
+                      <thead>
+                      <tr>
+                        <th>Numéro commande</th><th>Catégorie</th> <th>Article</th> <th>Quantité</th><th>Prix unitaire</th> <th>Prix total</th><th>Date</th> <th>Serveur(se)</th>
+                      </tr>
+                      </thead>
+                      <tbody >
+                      <tr  *ngFor="let reportlist of reportCommandeResults">
+                          <td  *ngIf="verifier(reportlist)" >{{reportlist.numero}} </td>
+                          <td  *ngIf="verifier(reportlist)" >{{reportlist.categorie}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.designation}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.quantite}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.prixUnitaire}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.prixTotal}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.date.substring(0,10)}} </td>
+                          <td  *ngIf="verifier(reportlist)">{{reportlist.prenom}} {{reportlist.nom}} </td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
       </div>
     
   </div>
